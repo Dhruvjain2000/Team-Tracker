@@ -4,18 +4,32 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".BoardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".Auth.LoginActivity" />
+        <activity android:name=".MenuscreenActivity"/>
+        <activity android:name=".MenuscreenActivity2" />
+        <activity android:name=".Auth.SignupActivity" />
+        <activity android:name=".Auth.PhoneAuthActivity" />
+        <activity android:name=".Auth.BaseActivity" />
+        <activity android:name=".ReportLocation.ReportLocationActivity" />
+        <activity android:name=".Auth.DifferentAuth" />
+        <activity android:name=".Auth.AnonymousActivity" />
+        <activity android:name=".Auth.PasswordlessActivity" />
+        <activity android:name=".Auth.GoogleSignInActivity" />
+        <activity android:name=".DummyActivity"></activity>
     </application>
 
 </manifest>

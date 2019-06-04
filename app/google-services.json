@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "287586838056",
+    "firebase_url": "https://team-tracker-4a430.firebaseio.com",
+    "project_id": "team-tracker-4a430",
+    "storage_bucket": "team-tracker-4a430.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287586838056:android:434d884cef8c2190",
+        "android_client_info": {
+          "package_name": "com.example.android.teamtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287586838056-0m6bb2eitdh5amjdge7286sqdb3352ae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.teamtracker",
+            "certificate_hash": "738ed68cb5dcd66d4c3e819c7688f1d9ef649a10"
+          }
+        },
+        {
+          "client_id": "287586838056-ii0jg6m1l6kl9eadfv91ru152ttf6l59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1FYf0GQLMFFyyRAtEJg6xWLwLky5YUsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287586838056-ii0jg6m1l6kl9eadfv91ru152ttf6l59.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
