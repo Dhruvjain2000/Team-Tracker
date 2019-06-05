@@ -72,7 +72,7 @@ public class ReportLocationActivity extends LocationBaseActivity implements Samp
         pd = new ProgressDialog(this);
         samplePresenter = new SamplePresenter(this);
 
-        getLocation();
+//        getLocation();
 
 
         report.setOnClickListener(new View.OnClickListener() {

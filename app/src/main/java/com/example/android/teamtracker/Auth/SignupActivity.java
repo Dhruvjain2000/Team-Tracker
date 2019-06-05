@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.teamtracker.MenuscreenActivity;
+import com.example.android.teamtracker.MenuscreenActivity2;
 import com.example.android.teamtracker.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,9 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class  SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
     private FirebaseAuth mAuth;
-    private SwitchCompat languageSwitch;
+    private SwitchCompat adminSwitch;
 
-    public static int switchNumber = 0;
+    public int  switchNumber = 0;
 
     //    @InjectView(R.id.input_name)
     EditText _nameText;
@@ -48,7 +49,7 @@ public class  SignupActivity extends AppCompatActivity {
 
         _nameText = findViewById(R.id.input_name);
         _emailText = findViewById(R.id.input_email);
-        languageSwitch = findViewById(R.id.languageSwitch);
+        adminSwitch = findViewById(R.id.adminSwitch);
         _passwordText = findViewById(R.id.input_password);
         _signupButton = findViewById(R.id.btn_signup);
         _loginLink  = findViewById(R.id.link_login);
@@ -67,7 +68,7 @@ public class  SignupActivity extends AppCompatActivity {
             }
         });
 
-        languageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        adminSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // do something, the isChecked will be
                 // true if the switch is in the On position
@@ -84,7 +85,11 @@ public class  SignupActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser currentUser){
         Toast.makeText(this, "Welcome " + currentUser.getDisplayName(), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getBaseContext(),MenuscreenActivity.class));
+        if(switchNumber == 1)
+            startActivity(new Intent(getBaseContext(),MenuscreenActivity.class));
+        else
+            startActivity(new Intent(getBaseContext(),MenuscreenActivity2.class));
+
         finish();
     }
 
@@ -116,6 +121,11 @@ public class  SignupActivity extends AppCompatActivity {
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+
+        if(switchNumber == 0)
+            password = "Admin" + password + "Key";
+        else
+            password = "User" + password + "Key";
 
 
         mAuth.createUserWithEmailAndPassword(email, password)

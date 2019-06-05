@@ -77,7 +77,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 
 
         mAuth = FirebaseAuth.getInstance();
-        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
         arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
@@ -221,7 +221,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 //                break;
 //            }
             case R.id.tvSwitch: {
-                SignupActivity.switchNumber = 1 - SignupActivity.switchNumber;
+//                SignupActivity.switchNumber = 1 - SignupActivity.switchNumber;
                 Toast.makeText(this, "Inside here", Toast.LENGTH_SHORT).show();
 
             }
@@ -254,19 +254,19 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 
         if (shake) {
             shake = false;
-            if (SignupActivity.switchNumber == 0)
+//            if (SignupActivity.switchNumber == 0)
                 Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(this, "अक्षम कॉल करने के लिए हिलाएँ", Toast.LENGTH_SHORT).show();
+//            else
+//                Toast.makeText(this, "अक्षम कॉल करने के लिए हिलाएँ", Toast.LENGTH_SHORT).show();
             ShakeDetector.destroy();
             v.setBackgroundColor(Color.rgb(255, 0, 0));
 
         } else {
             shake = true;
-            if (SignupActivity.switchNumber == 0)
+//            if (SignupActivity.switchNumber == 0)
                 Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(this, "सक्षम कॉल करने के लिए हिला", Toast.LENGTH_SHORT).show();
+//            else
+//                Toast.makeText(this, "सक्षम कॉल करने के लिए हिला", Toast.LENGTH_SHORT).show();
             ShakeDetector.create(this, this);
             v.setBackgroundColor(Color.parseColor("#19783b"));
 
@@ -275,10 +275,10 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
     }
 
     public void paytm(View v) {
-        if (SignupActivity.switchNumber == 0)
+//        if (SignupActivity.switchNumber == 0)
             Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
+//        else
+//            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
 
 //        startActivity(new Intent(this, PaytmActivity.class));
     }
@@ -289,10 +289,10 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onItemClick(Item item) {
-        if (SignupActivity.switchNumber == 0)
+//        if (SignupActivity.switchNumber == 0)
             Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
+//        else
+//            Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
         if (item.getText().equals("Chatbot"))  {
 //            startActivity(new Intent(getBaseContext(), ChatActivity.class));
@@ -320,10 +320,10 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 //            startActivity(new Intent(this, ReportProblemActivity.class));
         }
         else {
-            if (SignupActivity.switchNumber == 0)
+//            if (SignupActivity.switchNumber == 0)
                 Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(this, "त्रुटि! नुकसान की", Toast.LENGTH_SHORT).show();
+//            else
+//                Toast.makeText(this, "त्रुटि! नुकसान की", Toast.LENGTH_SHORT).show();
         }
     }
 

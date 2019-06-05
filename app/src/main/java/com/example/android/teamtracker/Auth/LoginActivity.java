@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.teamtracker.MenuscreenActivity;
+import com.example.android.teamtracker.MenuscreenActivity2;
 import com.example.android.teamtracker.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +26,10 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     private FirebaseAuth mAuth;
+
+    private SwitchCompat adminSwitch;
+    public int  switchNumber = 0;
+
 
     EditText _emailText;
     EditText _passwordText;
@@ -36,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 //        ButterKnife.inject(this);
 
         mAuth = FirebaseAuth.getInstance();
+        adminSwitch = findViewById(R.id.adminSwitch);
 
 
         _emailText = findViewById(R.id.input_email);
@@ -68,6 +76,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
+
+        adminSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if(isChecked)
+                    switchNumber = 1;
+                else
+                    switchNumber = 0;
+            }
+        });
 //        mAuth = FirebaseAuth.getInstance();
 //        if(mAuth.getCurrentUser() != null){
 //            startActivity(new Intent(getBaseContext(),MenuScreen.class));
@@ -85,7 +104,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser currentUser){
         Toast.makeText(this, "Welcome " + currentUser.getDisplayName(), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getBaseContext(),MenuscreenActivity.class));
+        if(switchNumber == 1)
+            startActivity(new Intent(getBaseContext(),MenuscreenActivity.class));
+        else
+            startActivity(new Intent(getBaseContext(),MenuscreenActivity2.class));
+
         finish();
     }
 
@@ -116,7 +139,11 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        // TODO: Implement your own authentication logic here.
+        if(switchNumber == 0)
+            password = "Admin" + password + "Key";
+        else
+            password = "User" + password + "Key";
+
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -132,12 +159,10 @@ public class LoginActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user.
                             progressDialog.dismiss();
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getBaseContext(), "Authentication failed.",
+                            Toast.makeText(getBaseContext(), task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
+//                           updateUI(null);
                         }
-
-                        // ...
                     }
                 });
 
@@ -187,6 +212,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             _emailText.setError("enter a valid email address");
