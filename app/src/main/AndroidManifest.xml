@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.teamtracker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -9,17 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BoardingActivity">
+        <activity android:name=".LocationUtil.MyLocationUsingHelper">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BoardingActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity" />
         <activity android:name=".Auth.LoginActivity" />
-        <activity android:name=".MenuscreenActivity"/>
+        <activity android:name=".MenuscreenActivity" />
         <activity android:name=".MenuscreenActivity2" />
         <activity android:name=".Auth.SignupActivity" />
         <activity android:name=".Auth.PhoneAuthActivity" />
@@ -29,7 +34,8 @@
         <activity android:name=".Auth.AnonymousActivity" />
         <activity android:name=".Auth.PasswordlessActivity" />
         <activity android:name=".Auth.GoogleSignInActivity" />
-        <activity android:name=".DummyActivity"></activity>
+        <activity android:name=".DummyActivity" />
+        <activity android:name=".LocationUtil.CityByCoordinates"></activity>
     </application>
 
 </manifest>

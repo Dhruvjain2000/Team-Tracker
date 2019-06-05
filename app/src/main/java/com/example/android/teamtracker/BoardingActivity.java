@@ -30,7 +30,7 @@ public class BoardingActivity extends AhoyOnboarderActivity {
 //            editor.commit();
 //        }
 //        else{
-            startActivity(new Intent(getBaseContext(),SplashActivity.class));
+//            startActivity(new Intent(getBaseContext(),SplashActivity.class));
 //        }
 
         AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("24x7 assistance", "Stay connected with doctors and medical experts and leverage instant support in case of emergency", R.drawable.patient);

@@ -24,6 +24,7 @@ import com.example.android.teamtracker.Adapters.MenuAdapter;
 import com.example.android.teamtracker.Auth.LoginActivity;
 import com.example.android.teamtracker.Auth.SignupActivity;
 import com.example.android.teamtracker.Model.Item;
+import com.example.android.teamtracker.ReportLocation.ReportLocationActivity;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.maps.android.quadtree.PointQuadTree;
@@ -317,7 +318,7 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 //            startActivity(new Intent(this, HeatmapsDemoActivity.class));
             ;
         } else if (item.getText().equals("Donate Your Info")) {
-//            startActivity(new Intent(getBaseContext(), QuestionnaireActivity.class));
+            startActivity(new Intent(getBaseContext(), ReportLocationActivity.class));
         }else if(item.getText().equals("Report your case")){
 //            startActivity(new Intent(this, ReportProblemActivity.class));
         }

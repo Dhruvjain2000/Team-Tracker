@@ -11,6 +11,13 @@
     <color name="primary_darker">#19783b</color>
     <color name="accent">#FFFFFF</color>
 
+
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+
+    <color name="proceed_disable">#DEDEDE</color>
+    <color name="proceed_enable">#72D63A</color>
+    <color name="colorWhite">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="jet">#222222</color>
     <color name="oil">#333333</color>

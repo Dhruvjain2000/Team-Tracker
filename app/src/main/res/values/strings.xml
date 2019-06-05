@@ -13,6 +13,8 @@
     <string name="phone_title_text">Phone Number</string>
     <string name="hint_phone_number">Phone Number</string>
     <string name="hint_verification_code">Verification Code</string>
+    <string name="quotedesc">Welcome! Where should we deliver to?</string>
+
     <string name="start_phone_auth">Start</string>
     <string name="verify_phone_auth">Verify</string>
     <string name="resend_phone_auth">Resend</string>
