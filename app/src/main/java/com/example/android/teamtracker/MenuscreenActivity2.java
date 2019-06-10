@@ -1,6 +1,7 @@
 package com.example.android.teamtracker;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import com.example.android.teamtracker.Auth.LoginActivity;
 import com.example.android.teamtracker.Auth.SignupActivity;
 import com.example.android.teamtracker.Model.Item;
 import com.example.android.teamtracker.R;
+import com.example.android.teamtracker.RequestParts.RequestActivity;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
@@ -80,10 +82,10 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 //        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
-        arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.request), R.drawable.ic_heatmap, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.posI), R.drawable.ic_nearest_hosp, "#ffffff"));
         arrayList.add(new Item(getString(R.string.plant_disease_detection), R.drawable.plant, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot, "#ffffff"));
+//        arrayList.add(new Item(getString(R.string.fina), R.drawable.ic_chat_bot, "#ffffff"));
         arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
         arrayList.add(new Item(getString(R.string.input), R.drawable.form, "#ffffff"));
         arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
@@ -96,7 +98,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         recyclerView.setLayoutManager(manager);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Water Borne");
+            getSupportActionBar().setTitle("Team Tracker");
         }
 
 
@@ -295,9 +297,9 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 //            Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
         if (item.getText().equals("Chatbot"))  {
-//            startActivity(new Intent(getBaseContext(), ChatActivity.class));
+            startActivity(new Intent(getBaseContext(), RequestedActivity.class));
         } else if (item.getText().equals("Plant Disease Detection") || item.getText().equals("पादप रोग का पता लगाना")) {
-//            startActivity(new Intent(getBaseContext(), PlantDisease.class));
+            startActivity(new Intent(getBaseContext(), RequestedActivity.class));
         } else if (item.getText().equals("News")) {
 //            startActivity(new Intent(getBaseContext(), NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
@@ -311,8 +313,8 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         } else if (item.getText().equals("Prediction of loss")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Detected Cases in Area")) {
-//            startActivity(new Intent(this, HeatmapsDemoActivity.class));
+        } else if (item.getText().equals("Requested Parts")) {
+            startActivity(new Intent(this, RequestedActivity.class));
             ;
         } else if (item.getText().equals("Donate Your Info")) {
 //            startActivity(new Intent(getBaseContext(), QuestionnaireActivity.class));

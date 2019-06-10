@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginVertical="35dp"
+    android:background="@android:color/holo_blue_light"
     >
     <TextView
+        android:layout_marginVertical="35dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter Details"
@@ -50,23 +51,24 @@
         >
 
         <TextView
-            android:id="@+id/tv_part_name"
+            android:id="@+id/tv_current_loc"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:paddingTop="8dp"
             android:layout_gravity="center"
-            android:text="Part name"
+            android:text="Current location"
             />
         <EditText
-            android:id="@+id/et_part_name"
+            android:id="@+id/et_current_loc"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:hint="Name of part"
+            android:hint="current Location"
             />
     </LinearLayout>
+
 
     <LinearLayout
         android:paddingVertical="15dp"
@@ -76,78 +78,26 @@
         >
 
         <TextView
-            android:id="@+id/tvCount"
+            android:id="@+id/tv_date"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:paddingTop="8dp"
             android:layout_gravity="center"
-            android:text="Part Count"
+            android:text="Date"
             />
         <EditText
-            android:id="@+id/et_part_count"
+            android:id="@+id/et_date"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:hint="Count of part"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:paddingVertical="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        >
-
-        <TextView
-            android:id="@+id/tv_city_name"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:paddingTop="8dp"
-            android:layout_gravity="center"
-            android:text="City name"
-            />
-        <EditText
-            android:id="@+id/et_city_name"
-            android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:hint="City name"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:paddingVertical="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        >
-
-        <TextView
-            android:id="@+id/tv_pincode"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:paddingTop="8dp"
-            android:layout_gravity="center"
-            android:text="Pincode"
-            />
-        <EditText
-            android:id="@+id/et_pin_code"
-            android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:hint="Enter pin code"
+            android:hint="DD-MM-YYYY"
             />
     </LinearLayout>
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -156,7 +106,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="8dp"
-        android:text="Request"
+        android:text="Submit"
         android:textColor="@color/white" />
 
 </LinearLayout>

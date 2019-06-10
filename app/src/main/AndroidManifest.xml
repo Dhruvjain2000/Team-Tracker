@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestParts.RequestActivity">
+        <activity android:name=".BoardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,7 +38,10 @@
         <activity android:name=".Auth.GoogleSignInActivity" />
         <activity android:name=".DummyActivity" />
         <activity android:name=".LocationUtil.CityByCoordinates" />
-        <activity android:name=".BoardingActivity"></activity>
+        <activity android:name=".RequestParts.RequestActivity" />
+        <activity android:name=".RequestedActivity" />
+        <activity android:name=".Forms.FormInitialActivity" />
+        <activity android:name=".Forms.FormFinalActivity"></activity>
     </application>
 
 </manifest>

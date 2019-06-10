@@ -27,10 +27,11 @@
     <string name="status_email_not_sent">Email not send</string>
     <string name="status_email_sent">Email send</string>
     <string name="status_link_found">Link Not Found</string>
-    <string name="heatmap">Detected Cases in Area</string>
-    <string name="hospital">Nearest Hospital</string>
+    <string name="request">Request Parts</string>
+    <string name="posI">Form for initial position</string>
+    <string name="posF">Form for final position</string>
     <string name="plant_disease_detection">Plant Disease Detection</string>
-    <string name="chatbot">Chatbot</string>
+    <string name="current">Get Current Location</string>
     <string name="home_remedies">Home Remedies</string>
     <string name="input_text">Looking for…</string>
     <string name="news_water">News</string>

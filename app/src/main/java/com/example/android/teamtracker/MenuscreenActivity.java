@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -17,18 +16,18 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.teamtracker.Adapters.MenuAdapter;
 import com.example.android.teamtracker.Auth.LoginActivity;
-import com.example.android.teamtracker.Auth.SignupActivity;
+import com.example.android.teamtracker.Forms.FormFinalActivity;
+import com.example.android.teamtracker.Forms.FormInitialActivity;
 import com.example.android.teamtracker.LocationUtil.MyLocationUsingHelper;
 import com.example.android.teamtracker.Model.Item;
 import com.example.android.teamtracker.ReportLocation.ReportLocationActivity;
+import com.example.android.teamtracker.RequestParts.RequestActivity;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.maps.android.quadtree.PointQuadTree;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 import java.text.DateFormat;
@@ -84,10 +83,10 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 //        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
-        arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.plant_disease_detection), R.drawable.plant, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.request), R.drawable.application, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.posI), R.drawable.form_i, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.posF), R.drawable.form_f, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.current), R.drawable.logo, "#ffffff"));
         arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
         arrayList.add(new Item(getString(R.string.input), R.drawable.form, "#ffffff"));
         arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
@@ -293,20 +292,15 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onItemClick(Item item) {
-//        if (SignupActivity.switchNumber == 0)
-            Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
-//        else
-//            Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
-        if (item.getText().equals("Chatbot"))  {
-//            startActivity(new Intent(getBaseContext(), ChatActivity.class));
-        } else if (item.getText().equals("Plant Disease Detection") || item.getText().equals("पादप रोग का पता लगाना")) {
-//            startActivity(new Intent(getBaseContext(), PlantDisease.class));
-        } else if (item.getText().equals("News")) {
-//            startActivity(new Intent(getBaseContext(), NewsActivity.class));
-            Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Is Place Safe")) {
-//            startActivity(new Intent(getBaseContext(), IsPlaceSafeActivity.class));
+        if (item.getText().equals("Form for initial position"))  {
+            startActivity(new Intent(getBaseContext(), FormInitialActivity.class));
+        } else if (item.getText().equals("Request Parts")) {
+            startActivity(new Intent(getBaseContext(), RequestActivity.class));
+        } else if (item.getText().equals("Form for final position")) {
+            startActivity(new Intent(getBaseContext(), FormFinalActivity.class));
+        } else if (item.getText().equals("Get Current Location")) {
+            startActivity(new Intent(getBaseContext(), MyLocationUsingHelper.class));
         } else if (item.getText().equals("Home Remedies")) {
 //            startActivity(new Intent(getBaseContext(), HomeRemedy.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();

@@ -33,12 +33,10 @@ public class BoardingActivity extends AhoyOnboarderActivity {
 //            startActivity(new Intent(getBaseContext(),SplashActivity.class));
 //        }
 
-        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("24x7 assistance", "Stay connected with doctors and medical experts and leverage instant support in case of emergency", R.drawable.patient);
-        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("AI based chatbot", "IBM based doctor chatbot for guidance in case of any disorder.", R.drawable.robot);
-        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("Timed Alerts and Notifications", "Stay notified with all government announcements and prevention techniques with our notification services", R.drawable.announcement);
-        AhoyOnboarderCard ahoyOnboarderCard4 = new AhoyOnboarderCard("Is Place Safe ?", "Visiting a new place ? Check if it safe or not. Rain and terrain play a vital role!", R.drawable.tsunami);
-        AhoyOnboarderCard ahoyOnboarderCard5 = new AhoyOnboarderCard("Nearby Hospitals", "Emergency ? We'll connect you with all nearby hospitals in no time with google maps support.", R.drawable.map);
-        AhoyOnboarderCard ahoyOnboarderCard6 = new AhoyOnboarderCard("Paytm Payment Support", "Pay doctors and book appointments comfortably. Paytm Karo!", R.drawable.paytm);
+        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("Coordination", "We seek to coordinate you with the admin 24 x 7. With our realtime database all your queries are processed instantaneously !", R.drawable.develop);
+        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("Location monitoring", "Be it any city or village ! We keep your location updated along with your longitude and latitude", R.drawable.map);
+        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("Request Parts", "Fell short of any equipment ? Now you can request part and ping directly to the admin", R.drawable.application);
+        AhoyOnboarderCard ahoyOnboarderCard4 = new AhoyOnboarderCard("Report Generation", "All reports at disposal ! With our realtime database get your report in no time", R.drawable.newspaper);
 
 
         ahoyOnboarderCard1.setTitleColor(android.R.color.black);
@@ -49,21 +47,12 @@ public class BoardingActivity extends AhoyOnboarderActivity {
         ahoyOnboarderCard3.setDescriptionColor(android.R.color.black);
         ahoyOnboarderCard4.setTitleColor(android.R.color.black);
         ahoyOnboarderCard4.setDescriptionColor(android.R.color.black);
-        ahoyOnboarderCard5.setTitleColor(android.R.color.black);
-        ahoyOnboarderCard5.setDescriptionColor(android.R.color.black);
-        ahoyOnboarderCard6.setTitleColor(android.R.color.black);
-        ahoyOnboarderCard6.setDescriptionColor(android.R.color.black);
 
 
         ahoyOnboarderCard1.setBackgroundColor(R.color.black_transparent);
         ahoyOnboarderCard2.setBackgroundColor(R.color.black_transparent);
         ahoyOnboarderCard3.setBackgroundColor(R.color.black_transparent);
         ahoyOnboarderCard4.setBackgroundColor(R.color.black_transparent);
-        ahoyOnboarderCard5.setBackgroundColor(R.color.black_transparent);
-        ahoyOnboarderCard6.setBackgroundColor(R.color.black_transparent);
-
-
-
 
 
         List<AhoyOnboarderCard> pages = new ArrayList<>();
@@ -72,8 +61,7 @@ public class BoardingActivity extends AhoyOnboarderActivity {
         pages.add(ahoyOnboarderCard2);
         pages.add(ahoyOnboarderCard3);
         pages.add(ahoyOnboarderCard4);
-        pages.add(ahoyOnboarderCard5);
-        pages.add(ahoyOnboarderCard6);
+
 
         for (AhoyOnboarderCard page : pages) {
             page.setTitleColor(R.color.white);
