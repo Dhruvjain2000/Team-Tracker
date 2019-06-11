@@ -70,11 +70,7 @@ public class BoardingActivity extends AhoyOnboarderActivity {
 
         setFinishButtonTitle("Get Started");
         showNavigationControls(true);
-        //setGradientBackground();
         setImageBackground(R.drawable.boarding);
-
-//        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf");
-        //setFont(face);
 
         setInactiveIndicatorColor(R.color.grey_600);
         setActiveIndicatorColor(R.color.white);
@@ -85,7 +81,6 @@ public class BoardingActivity extends AhoyOnboarderActivity {
 
     @Override
     public void onFinishButtonPressed() {
-//        Toast.makeText(this, "Finish Pressed", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getBaseContext(),SplashActivity.class));
     }
 }

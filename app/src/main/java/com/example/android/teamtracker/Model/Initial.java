@@ -1,4 +1,4 @@
-package com.example.android.teamtracker.Forms;
+package com.example.android.teamtracker.Model;
 
 public class Initial {
     String name;
@@ -17,6 +17,9 @@ public class Initial {
 
     public String getCurrentLocation() {
         return currentLocation;
+    }
+
+    public Initial() {
     }
 
     public void setCurrentLocation(String currentLocation) {

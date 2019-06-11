@@ -42,11 +42,7 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
 
     private Location mLastLocation;
 
-    // Google client to interact with Google API
-
     private GoogleApiClient mGoogleApiClient;
-
-    // list of permissions
 
     private ArrayList<String> permissions=new ArrayList<>();
     private PermissionUtils permissionUtils;
@@ -66,10 +62,6 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
 
     }
 
-    /**
-     * Method to check the availability of location permissions
-     * */
-
     public void checkpermission()
     {
         permissionUtils.check_permission(permissions,"Need GPS permission for getting your location",1);
@@ -78,10 +70,6 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
     private boolean isPermissionGranted() {
         return isPermissionGranted;
     }
-
-    /**
-     * Method to verify google play services on the device
-     * */
 
     public boolean checkPlayServices() {
 
@@ -101,10 +89,6 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
         return true;
     }
 
-    /**
-     * Method to display the location on UI
-     * */
-
     public Location getLocation() {
 
         if (isPermissionGranted()) {
@@ -121,11 +105,9 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
                 e.printStackTrace();
 
             }
-
         }
 
         return null;
-
     }
 
     public Address getAddress(double latitude, double longitude)
@@ -135,7 +117,7 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
         geocoder = new Geocoder(context, Locale.getDefault());
 
         try {
-            addresses = geocoder.getFromLocation(latitude,longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            addresses = geocoder.getFromLocation(latitude,longitude, 1);
             return addresses.get(0);
 
         } catch (IOException e) {
@@ -146,10 +128,6 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
 
     }
 
-
-    /**
-     * Method used to build GoogleApiClient
-     */
 
     public void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(context)
@@ -178,17 +156,13 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
 
                 switch (status.getStatusCode()) {
                     case LocationSettingsStatusCodes.SUCCESS:
-                        // All location settings are satisfied. The client can initialize location requests here
                         mLastLocation=getLocation();
                         break;
                     case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
                         try {
-                            // Show the dialog by calling startResolutionForResult(),
-                            // and check the result in onActivityResult().
                             status.startResolutionForResult(current_activity, REQUEST_CHECK_SETTINGS);
 
                         } catch (IntentSender.SendIntentException e) {
-                            // Ignore the error.
                         }
                         break;
                     case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
@@ -199,45 +173,30 @@ public class LocationHelper implements PermissionUtils.PermissionResultCallback{
 
 
     }
-
-    /**
-     * Method used to connect GoogleApiClient
-     */
     public void connectApiClient()
     {
         mGoogleApiClient.connect();
     }
 
-    /**
-     * Method used to get the GoogleApiClient
-     */
     public GoogleApiClient getGoogleApiCLient()
     {
         return mGoogleApiClient;
     }
 
-
-    /**
-     * Handles the permission results
-     */
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
     {
        permissionUtils.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 
-    /**
-     * Handles the activity results
-     */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CHECK_SETTINGS:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
-                        // All required changes were successfully made
+
                         mLastLocation=getLocation();
                         break;
                     case Activity.RESULT_CANCELED:
-                        // The user was asked to change settings, but chose not to
                         break;
                     default:
                         break;

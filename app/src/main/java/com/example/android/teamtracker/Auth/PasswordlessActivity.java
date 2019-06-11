@@ -60,13 +60,11 @@ public class PasswordlessActivity extends BaseActivity implements View.OnClickLi
         mSignInButton.setOnClickListener(this);
         mSignOutButton.setOnClickListener(this);
 
-        // Restore the "pending" email address
         if (savedInstanceState != null) {
             mPendingEmail = savedInstanceState.getString(KEY_PENDING_EMAIL, null);
             mEmailField.setText(mPendingEmail);
         }
 
-        // Check if the Intent that started the Activity contains an email sign-in link.
         checkIntent(getIntent());
     }
 
@@ -88,11 +86,6 @@ public class PasswordlessActivity extends BaseActivity implements View.OnClickLi
         outState.putString(KEY_PENDING_EMAIL, mPendingEmail);
     }
 
-    /**
-     * Check to see if the Intent has an email link, and if so set up the UI accordingly.
-     * This can be called from either onCreate or onNewIntent, depending on how the Activity
-     * was launched.
-     */
     private void checkIntent(@Nullable Intent intent) {
         if (intentHasEmailLink(intent)) {
             mEmailLink = intent.getData().toString();
@@ -107,9 +100,6 @@ public class PasswordlessActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    /**
-     * Determine if the given Intent contains an email sign-in link.
-     */
     private boolean intentHasEmailLink(@Nullable Intent intent) {
         if (intent != null && intent.getData() != null) {
             String intentData = intent.getData().toString();
@@ -121,9 +111,6 @@ public class PasswordlessActivity extends BaseActivity implements View.OnClickLi
         return false;
     }
 
-    /**
-     * Send an email sign-in link to the specified email.
-     */
     private void sendSignInLink(final String email) {
         ActionCodeSettings settings = ActionCodeSettings.newBuilder()
                 .setAndroidPackageName(
@@ -162,10 +149,6 @@ public class PasswordlessActivity extends BaseActivity implements View.OnClickLi
                 });
     }
 
-    /**
-     * Sign in using an email address and a link, the link is passed to the Activity
-     * from the dynamic link contained in the email.
-     */
     private void signInWithEmailLink(String email, String link) {
         Log.d(TAG, "signInWithLink:" + link);
 

@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.teamtracker.MenuscreenActivity;
+import com.example.android.teamtracker.Model.Initial;
 import com.example.android.teamtracker.R;
-import com.example.android.teamtracker.RequestParts.UploadRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;

@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import com.example.android.teamtracker.MenuscreenActivity;
 import com.example.android.teamtracker.R;
-import com.example.android.teamtracker.ReportLocation.ReportLocationActivity;
-import com.example.android.teamtracker.ReportLocation.UploadReport;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;

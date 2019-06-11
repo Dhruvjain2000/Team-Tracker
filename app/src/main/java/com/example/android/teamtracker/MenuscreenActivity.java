@@ -87,11 +87,7 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
         arrayList.add(new Item(getString(R.string.posI), R.drawable.form_i, "#ffffff"));
         arrayList.add(new Item(getString(R.string.posF), R.drawable.form_f, "#ffffff"));
         arrayList.add(new Item(getString(R.string.current), R.drawable.logo, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
         arrayList.add(new Item(getString(R.string.input), R.drawable.form, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
-        arrayList.add(new Item("Report your case", R.drawable.tsunami, "#ffffff"));
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
         recyclerView.setAdapter(menuAdapter);
@@ -219,32 +215,16 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.tvpaytm: {
-//                paytm(null);
-//                break;
-//            }
-//            case R.id.tvSwitch: {
-//                SignupActivity.switchNumber = 1 - SignupActivity.switchNumber;
-//                Toast.makeText(this, "Inside here", Toast.LENGTH_SHORT).show();
-//
-//            }
             case R.id.tvhosp: {
                 hosp(null);
                 break;
             }
             case R.id.tvsignout: {
-//                FirebaseAuth.getInstance().signOut();
+                FirebaseAuth.getInstance().signOut();
                 login(null);
                 break;
             }
-//            case R.id.change_lang : {
-//                SignupActivity.switchNumber = 1 - SignupActivity.switchNumber;
-//                startActivity(new Intent(getBaseContext(),DummyActivity.class));            Toast.makeText(this, "Inside here", Toast.LENGTH_SHORT).show();
-//
-//
-//                break;
-//            }
-        }
+       }
     }
 
     public void login(View v) {
@@ -277,18 +257,6 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    public void paytm(View v) {
-//        if (SignupActivity.switchNumber == 0)
-            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
-//        else
-//            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
-
-//        startActivity(new Intent(this, PaytmActivity.class));
-    }
-
-    public void anonymousChat(View v) {
-//        startActivity(new Intent(this, AnonymousChat.class));
-    }
 
     @Override
     public void onItemClick(Item item) {
@@ -301,27 +269,11 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
             startActivity(new Intent(getBaseContext(), FormFinalActivity.class));
         } else if (item.getText().equals("Get Current Location")) {
             startActivity(new Intent(getBaseContext(), MyLocationUsingHelper.class));
-        } else if (item.getText().equals("Home Remedies")) {
-//            startActivity(new Intent(getBaseContext(), HomeRemedy.class));
-            Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Nearest Hospital")) {
-            startActivity(new Intent(getBaseContext(), MyLocationUsingHelper.class));
-        } else if (item.getText().equals("Prediction of loss")) {
-//            startActivity(new Intent(getBaseContext(),PredictLoss.class));
-//            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Detected Cases in Area")) {
-//            startActivity(new Intent(this, HeatmapsDemoActivity.class));
-            ;
-        } else if (item.getText().equals("Donate Your Info")) {
+        } else if (item.getText().equals("Fill Your Info")) {
             startActivity(new Intent(getBaseContext(), ReportLocationActivity.class));
-        }else if(item.getText().equals("Report your case")){
-//            startActivity(new Intent(this, ReportProblemActivity.class));
         }
         else {
-//            if (SignupActivity.switchNumber == 0)
-                Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
-//            else
-//                Toast.makeText(this, "त्रुटि! नुकसान की", Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -29,7 +29,9 @@
             android:paddingRight="35dp"
             android:text="@string/quotedesc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 
@@ -126,6 +128,8 @@
         android:id="@+id/btnLocation"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="PROCEED" />
+        android:text="PROCEED"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>

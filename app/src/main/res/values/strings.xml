@@ -35,12 +35,19 @@
     <string name="home_remedies">Home Remedies</string>
     <string name="input_text">Looking for…</string>
     <string name="news_water">News</string>
-    <string name="input">Donate Your Info</string>
+    <string name="input">Fill Your Info</string>
     <string name="is_safe">Is Place Safe</string>
     <string name="voice">Emotion Sensor</string>
     <string name="news">Relaxing Songs</string>
     <string name="weather">Chatbot</string>
     <string name="forum">Games</string>
     <string name="buy">Mind Refreshing Memes</string>
+    <string name="requests">Requests</string>
+    <string name="arrival">Arrival Reports</string>
+    <string name="departure">Departure Reports</string>
+    <string name="basic">All Workers Info</string>
+    <string name="login">Login Report</string>
+    <string name="login_info">Login information</string>
+    <string name="city">City Identification</string>
 
 </resources>

@@ -62,14 +62,10 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
 
     private Location mLastLocation;
 
-    // Google client to interact with Google API
-
     private GoogleApiClient mGoogleApiClient;
 
     double latitude;
     double longitude;
-
-    // list of permissions
 
     ArrayList<String> permissions=new ArrayList<>();
     PermissionUtils permissionUtils;
@@ -120,19 +116,12 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
             }
         });
 
-        // check availability of play services
         if (checkPlayServices()) {
 
-            // Building the GoogleApi client
             buildGoogleApiClient();
         }
 
     }
-
-
-    /**
-     * Method to display the location on UI
-     * */
 
     private void getLocation() {
 
@@ -159,7 +148,7 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
         geocoder = new Geocoder(this, Locale.getDefault());
 
         try {
-            addresses = geocoder.getFromLocation(latitude,longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            addresses = geocoder.getFromLocation(latitude,longitude, 1);
             return addresses.get(0);
 
         } catch (IOException e) {
@@ -227,10 +216,6 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
 
     }
 
-    /**
-     * Creating google api client object
-     * */
-
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -263,12 +248,9 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
                         break;
                     case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
                         try {
-                            // Show the dialog by calling startResolutionForResult(),
-                            // and check the result in onActivityResult().
                             status.startResolutionForResult(MyLocationUsingLocationAPI.this, REQUEST_CHECK_SETTINGS);
 
                         } catch (IntentSender.SendIntentException e) {
-                            // Ignore the error.
                         }
                         break;
                     case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
@@ -280,12 +262,6 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
 
     }
 
-
-
-
-    /**
-     * Method to verify google play services on the device
-     * */
 
     private boolean checkPlayServices() {
 
@@ -316,11 +292,9 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
             case REQUEST_CHECK_SETTINGS:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
-                        // All required changes were successfully made
                         getLocation();
                         break;
                     case Activity.RESULT_CANCELED:
-                        // The user was asked to change settings, but chose not to
                         break;
                     default:
                         break;
@@ -335,10 +309,6 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
         super.onResume();
         checkPlayServices();
     }
-
-    /**
-     * Google api callback methods
-     */
     @Override
     public void onConnectionFailed(ConnectionResult result) {
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = "
@@ -348,7 +318,6 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
     @Override
     public void onConnected(Bundle arg0) {
 
-        // Once connected with google api, get the location
         getLocation();
     }
 
@@ -358,13 +327,10 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
     }
 
 
-    // Permission check functions
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-        // redirects to utils
         permissionUtils.onRequestPermissionsResult(requestCode,permissions,grantResults);
 
     }
@@ -397,8 +363,5 @@ public class MyLocationUsingLocationAPI extends AppCompatActivity implements Con
     {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
-
-
-
 }
 

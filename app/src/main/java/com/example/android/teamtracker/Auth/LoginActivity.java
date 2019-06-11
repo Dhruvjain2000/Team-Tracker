@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        ButterKnife.inject(this);
 
         mAuth = FirebaseAuth.getInstance();
         adminSwitch = findViewById(R.id.adminSwitch);
@@ -71,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // Start the Signup activity
+
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
@@ -79,19 +78,13 @@ public class LoginActivity extends AppCompatActivity {
 
         adminSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
+
                 if(isChecked)
                     switchNumber = 1;
                 else
                     switchNumber = 0;
             }
         });
-//        mAuth = FirebaseAuth.getInstance();
-//        if(mAuth.getCurrentUser() != null){
-//            startActivity(new Intent(getBaseContext(),MenuScreen.class));
-//            finish();
-//        }
 
         int value = getIntent().getIntExtra("MenuSreen",1);
 
@@ -115,9 +108,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
     }
 
     public void login() {
@@ -150,31 +140,20 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             progressDialog.dismiss();
-//                            Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
                             progressDialog.dismiss();
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(getBaseContext(), task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
-//                           updateUI(null);
+                            _loginButton.setEnabled(true);
+
                         }
                     }
                 });
 
-//        new android.os.Handler().postDelayed(
-//                new Runnable() {
-//                    public void run() {
-//                        // On complete call either onLoginSuccess or onLoginFailed
-//                        onLoginSuccess();
-//                        // onLoginFailed();
-//                        progressDialog.dismiss();
-//                    }
-//                }, 3000);
     }
 
 
@@ -183,8 +162,6 @@ public class LoginActivity extends AppCompatActivity {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 
-                // TODO: Implement successful signup logic here
-                // By default we just finish the Activity and log them in automatically
                 this.finish();
             }
         }
@@ -192,7 +169,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // disable going back to the MainActivity
         moveTaskToBack(true);
     }
 
@@ -203,7 +179,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
         _loginButton.setEnabled(true);
     }
 
@@ -227,9 +202,6 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             _passwordText.setError(null);
         }
-
-
-
         return valid;
     }
 }

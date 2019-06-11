@@ -79,11 +79,8 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
                 showToast("Proceed to the next step");
             }
         });
-
-        // check availability of play services
         if (locationHelper.checkPlayServices()) {
 
-            // Building the GoogleApi client
             locationHelper.buildGoogleApiClient();
         }
 
@@ -161,9 +158,6 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
         locationHelper.checkPlayServices();
     }
 
-    /**
-     * Google api callback methods
-     */
     @Override
     public void onConnectionFailed(ConnectionResult result) {
         Log.i("Connection failed:", " ConnectionResult.getErrorCode() = "
@@ -172,8 +166,6 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
 
     @Override
     public void onConnected(Bundle arg0) {
-
-        // Once connected with google api, get the location
         mLastLocation=locationHelper.getLocation();
     }
 
@@ -183,11 +175,9 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
     }
 
 
-    // Permission check functions
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-        // redirects to utils
         locationHelper.onRequestPermissionsResult(requestCode,permissions,grantResults);
 
     }
@@ -196,7 +186,4 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
     {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
-
-
-
 }

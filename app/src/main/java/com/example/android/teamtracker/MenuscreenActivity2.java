@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.android.teamtracker.Adapters.MenuAdapter;
 import com.example.android.teamtracker.Auth.LoginActivity;
 import com.example.android.teamtracker.Auth.SignupActivity;
+import com.example.android.teamtracker.LocationUtil.CityByCoordinates;
 import com.example.android.teamtracker.Model.Item;
 import com.example.android.teamtracker.R;
 import com.example.android.teamtracker.RequestParts.RequestActivity;
@@ -40,7 +41,6 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
     Button tvpaytm;
     Button tvhosp;
     Button tvsignout;
-    Button tvChangeLang ;
     private WebView chatWindow;
     private RecyclerView recyclerView;
     private ArrayList<Item> arrayList;
@@ -79,18 +79,16 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 
 
         mAuth = FirebaseAuth.getInstance();
-//        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
-        arrayList.add(new Item(getString(R.string.request), R.drawable.ic_heatmap, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.posI), R.drawable.ic_nearest_hosp, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.plant_disease_detection), R.drawable.plant, "#ffffff"));
-//        arrayList.add(new Item(getString(R.string.fina), R.drawable.ic_chat_bot, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.input), R.drawable.form, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
-        arrayList.add(new Item("Report your case", R.drawable.tsunami, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.requests), R.drawable.meeting, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.arrival), R.drawable.arrival, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.departure), R.drawable.departure, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.basic), R.drawable.complete, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.login), R.drawable.form, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.city), R.drawable.logo, "#ffffff"));
+
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
         recyclerView.setAdapter(menuAdapter);
@@ -115,18 +113,13 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
                 .setActionBarViewForAnimation(toolbar)
                 .setClosedOnStart(true)
                 .build();
-//
-//        LayoutInflater li  = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-//        assert li != null;
+
         View v = LayoutInflater.from(this).inflate(R.layout.guillotine, null);
 
         tvSwitch = v.findViewById(R.id.tvSwitch);
         tvpaytm = v.findViewById(R.id.tvpaytm);
         tvhosp = v.findViewById(R.id.tvhosp);
         tvsignout = v.findViewById(R.id.tvsignout);
-
-//        btnChange = v.findViewById(R.id.change_lang);
-//        btnChange.setOnClickListener(this);
 
         tvSwitch.setOnClickListener(this);
         tvpaytm.setOnClickListener(this);
@@ -142,24 +135,8 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
             Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
         }
 
-//        convertToHindi(SignupActivity.switchNumber);
-
     }
 
-//    private void convertToHindi(int switchNumber) {
-//        if (switchNumber == 0)
-//            return;
-//        TextView tvMenuscreenHeading = findViewById(R.id.tvMenuscreenHeading);
-//        tvMenuscreenHeading.setText("जल जनित");
-//        Button tvHosp = findViewById(R.id.tvhosp);
-//        tvHosp.setText(getString(R.string.shake_to_call_h));
-//
-//        Button tvpaytm = findViewById(R.id.tvpaytm);
-//        tvpaytm.setText(getText(R.string.paytm_karo_h));
-//
-//        Button signOut = findViewById(R.id.tvsignout);
-//        signOut.setText(getString(R.string.sign_out_h));
-//    }
 
     @Override
     public void onBackPressed() {
@@ -296,22 +273,18 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 //        else
 //            Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
-        if (item.getText().equals("Chatbot"))  {
+        if (item.getText().equals("Requests"))  {
             startActivity(new Intent(getBaseContext(), RequestedActivity.class));
-        } else if (item.getText().equals("Plant Disease Detection") || item.getText().equals("पादप रोग का पता लगाना")) {
-            startActivity(new Intent(getBaseContext(), RequestedActivity.class));
-        } else if (item.getText().equals("News")) {
-//            startActivity(new Intent(getBaseContext(), NewsActivity.class));
-            Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Is Place Safe")) {
-//            startActivity(new Intent(getBaseContext(), IsPlaceSafeActivity.class));
-        } else if (item.getText().equals("Home Remedies")) {
-//            startActivity(new Intent(getBaseContext(), HomeRemedy.class));
-            Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Nearest Hospital")) {
-//            startActivity(new Intent(getBaseContext(), MapsActivity.class));
-        } else if (item.getText().equals("Prediction of loss")) {
-//            startActivity(new Intent(getBaseContext(),PredictLoss.class));
+        } else if (item.getText().equals("Arrival Reports")) {
+            startActivity(new Intent(getBaseContext(), ArrivalReportsActivity.class));
+        } else if (item.getText().equals("Departure Reports")) {
+            startActivity(new Intent(getBaseContext(), DepartureReportsActivity.class));
+        } else if (item.getText().equals("All Workers Info")) {
+            startActivity(new Intent(getBaseContext(), CompleteInfoActivity.class));
+        } else if (item.getText().equals("Login Report")) {
+            startActivity(new Intent(getBaseContext(), LoginInfoActivity.class));
+        } else if (item.getText().equals("City Identification")) {
+            startActivity(new Intent(getBaseContext(),CityByCoordinates.class));
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Requested Parts")) {
             startActivity(new Intent(this, RequestedActivity.class));

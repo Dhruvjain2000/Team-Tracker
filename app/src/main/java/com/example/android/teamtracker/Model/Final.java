@@ -1,9 +1,12 @@
-package com.example.android.teamtracker.Forms;
+package com.example.android.teamtracker.Model;
 
 public class Final {
     String name;
     String currentLocation;
     String date;
+
+    public Final() {
+    }
 
     public String getName() {
         return name;

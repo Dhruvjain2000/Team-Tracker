@@ -41,7 +41,11 @@
         <activity android:name=".RequestParts.RequestActivity" />
         <activity android:name=".RequestedActivity" />
         <activity android:name=".Forms.FormInitialActivity" />
-        <activity android:name=".Forms.FormFinalActivity"></activity>
+        <activity android:name=".Forms.FormFinalActivity" />
+        <activity android:name=".DepartureReportsActivity" />
+        <activity android:name=".ArrivalReportsActivity" />
+        <activity android:name=".CompleteInfoActivity" />
+        <activity android:name=".LoginInfoActivity"></activity>
     </application>
 
 </manifest>

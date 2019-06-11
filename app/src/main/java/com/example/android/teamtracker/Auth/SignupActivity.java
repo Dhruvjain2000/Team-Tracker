@@ -30,22 +30,16 @@ public class  SignupActivity extends AppCompatActivity {
 
     public int  switchNumber = 0;
 
-    //    @InjectView(R.id.input_name)
     EditText _nameText;
-    //    @InjectView(R.id.input_email)
     EditText _emailText;
-    //    @InjectView(R.id.input_password)
     EditText _passwordText;
-    //    @InjectView(R.id.btn_signup)
     Button _signupButton;
-    //    @InjectView(R.id.link_login)
     TextView _loginLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-//        ButterKnife.inject(this);
 
         _nameText = findViewById(R.id.input_name);
         _emailText = findViewById(R.id.input_email);
@@ -63,15 +57,12 @@ public class  SignupActivity extends AppCompatActivity {
         _loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Finish the registration screen and return to the Login activity
                 finish();
             }
         });
 
         adminSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
                 if(isChecked)
                     switchNumber = 1;
                 else
@@ -96,9 +87,6 @@ public class  SignupActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
     }
 
     public void signup() {
@@ -133,13 +121,13 @@ public class  SignupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+
                             progressDialog.dismiss();
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
+
                             progressDialog.dismiss();
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(getBaseContext(), "Authentication failed.",
@@ -147,7 +135,6 @@ public class  SignupActivity extends AppCompatActivity {
                             updateUI(null);
                         }
 
-                        // ...
                     }
                 });
     }
@@ -156,7 +143,7 @@ public class  SignupActivity extends AppCompatActivity {
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         startActivity(new Intent(getBaseContext(),MenuscreenActivity.class));
-//        setResult(RESULT_OK, null);
+
         finish();
     }
 
