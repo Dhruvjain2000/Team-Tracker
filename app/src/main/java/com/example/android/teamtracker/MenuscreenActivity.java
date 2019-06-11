@@ -1,7 +1,9 @@
 package com.example.android.teamtracker;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
@@ -23,11 +26,16 @@ import com.example.android.teamtracker.Auth.LoginActivity;
 import com.example.android.teamtracker.Forms.FormFinalActivity;
 import com.example.android.teamtracker.Forms.FormInitialActivity;
 import com.example.android.teamtracker.LocationUtil.MyLocationUsingHelper;
+import com.example.android.teamtracker.Model.Initial;
 import com.example.android.teamtracker.Model.Item;
+import com.example.android.teamtracker.Model.LoginHistory;
 import com.example.android.teamtracker.ReportLocation.ReportLocationActivity;
 import com.example.android.teamtracker.RequestParts.RequestActivity;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 import java.text.DateFormat;
@@ -47,6 +55,13 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
     private ArrayList<Item> arrayList;
     private FirebaseAuth mAuth;
     private Button btnChange;
+
+    private DatabaseReference mDatabaseRef;
+    FirebaseUser firebaseUser;
+    private DatabaseReference mDatabaseUser;
+    private FirebaseUser mCurrentUser;
+    private FirebaseAuth firebaseAuth;
+
 
     static int[] imageResources = new int[]{
             R.drawable.emotion,
@@ -76,10 +91,36 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menuscreen);
+
+        mAuth = FirebaseAuth.getInstance();
+        mCurrentUser = mAuth.getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Login History");
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+
+        mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("Login").child(firebaseUser.getUid());
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
 
-        mAuth = FirebaseAuth.getInstance();
+        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("Valid",Context.MODE_PRIVATE);
+        if(sharedPreferences != null || sharedPreferences.getInt("Valid",Context.MODE_PRIVATE) == 1) {
+            SharedPreferences sharedPref = getBaseContext().getSharedPreferences("Valid",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("Valid", 0);
+            editor.commit();
+
+            SharedPreferences sfEmail = getBaseContext().getSharedPreferences("email",Context.MODE_PRIVATE);
+            String email = sfEmail.getString("email","Email Not found");
+            Toast.makeText(this, "SP check " + email, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, currentDateTimeString, Toast.LENGTH_SHORT).show();
+
+            uploadFile(email,currentDateTimeString);
+        }
+
+
+            mAuth = FirebaseAuth.getInstance();
 //        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
@@ -157,6 +198,14 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 //        Button signOut = findViewById(R.id.tvsignout);
 //        signOut.setText(getString(R.string.sign_out_h));
 //    }
+
+    private void uploadFile(String email, String dateAndTime) {
+        LoginHistory upload = new LoginHistory(email,dateAndTime);
+        String uploadId = mDatabaseRef.push().getKey();
+        mDatabaseRef.child(uploadId).setValue(upload);
+        finish();
+
+    }
 
     @Override
     public void onBackPressed() {

@@ -1,7 +1,9 @@
 package com.example.android.teamtracker.Auth;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -44,6 +48,12 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         adminSwitch = findViewById(R.id.adminSwitch);
 
+            SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("Valid",Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = getBaseContext().getSharedPreferences("Valid",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("Valid", 1);
+            editor.commit();
+
 
         _emailText = findViewById(R.id.input_email);
         _passwordText = findViewById(R.id.input_password);
@@ -65,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 login();
             }
         });
+
 
         _signupLink.setOnClickListener(new View.OnClickListener() {
 
@@ -126,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
+        final String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
         if(switchNumber == 0)
@@ -140,6 +151,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            SharedPreferences sharedPref = getBaseContext().getSharedPreferences("email",Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString("email", email);
+                            editor.commit();
                             progressDialog.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
@@ -169,6 +184,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        _loginButton.setEnabled(true);
         moveTaskToBack(true);
     }
 
