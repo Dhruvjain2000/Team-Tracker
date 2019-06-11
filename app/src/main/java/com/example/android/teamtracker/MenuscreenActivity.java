@@ -103,7 +103,6 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
         mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("Login").child(firebaseUser.getUid());
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
-
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("Valid",Context.MODE_PRIVATE);
         if(sharedPreferences != null || sharedPreferences.getInt("Valid",Context.MODE_PRIVATE) == 1) {
             SharedPreferences sharedPref = getBaseContext().getSharedPreferences("Valid",Context.MODE_PRIVATE);
@@ -118,7 +117,6 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 
             uploadFile(email,currentDateTimeString);
         }
-
 
             mAuth = FirebaseAuth.getInstance();
 //        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
@@ -136,7 +134,7 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
         recyclerView.setLayoutManager(manager);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Water Borne");
+            getSupportActionBar().setTitle("Team Tracker");
         }
 
 
@@ -203,8 +201,6 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
         LoginHistory upload = new LoginHistory(email,dateAndTime);
         String uploadId = mDatabaseRef.push().getKey();
         mDatabaseRef.child(uploadId).setValue(upload);
-        finish();
-
     }
 
     @Override
@@ -227,8 +223,8 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 
     public void start(int pos) {
         //Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
-        Intent in = new Intent(this, MainActivity.class);
-        startActivity(in);
+//        Intent in = new Intent(this, MainActivity.class);
+//        startActivity(in);
     }
 
     public void stock(int pos) {
@@ -269,9 +265,9 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
                 break;
             }
             case R.id.tvsignout: {
-                FirebaseAuth.getInstance().signOut();
-                login(null);
-                break;
+//                FirebaseAuth.getInstance().signOut();
+//                login(null);
+//                break;
             }
        }
     }
