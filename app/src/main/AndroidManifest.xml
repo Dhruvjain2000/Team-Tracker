@@ -9,12 +9,17 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".PushNotification.ExampleApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+
         <activity android:name=".BoardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +50,49 @@
         <activity android:name=".DepartureReportsActivity" />
         <activity android:name=".ArrivalReportsActivity" />
         <activity android:name=".CompleteInfoActivity" />
-        <activity android:name=".LoginInfoActivity"></activity>
+        <activity android:name=".LoginInfoActivity" />
+        <activity android:name=".ImageUpload.ImageUploadActivity" />
+        <activity android:name=".ImageUpload.ImageActivity" />
+
+        <service
+            android:name=".ImageUpload.MyDownloadService"
+            android:exported="false" />
+
+        <!--
+          Android N SDK has new restrictions around sharing file:// URIs
+          https://developer.android.com/reference/android/support/v4/content/FileProvider.html#ProviderDefinition
+        -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.google.firebase.quickstart.firebasestorage.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- <activity android:name=".MainActivity"></activity> -->
+        <service
+            android:name=".ImageUpload.AddEvent"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".PushNotification.PushNotificationActivity" />
+        <activity android:name=".PushNotification.SecondActivity" />
+        <activity android:name=".PushNotification.GreenActivity" />
+
+        <service
+            android:name=".PushNotification.NotificationExtenderExample"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="com.onesignal.NotificationExtender" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".PushNotification.SendNotificationActivity" />
+        <activity android:name=".ImageUpload.CheckImageActivity"></activity>
     </application>
 
 </manifest>

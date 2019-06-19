@@ -25,6 +25,7 @@ import com.example.android.teamtracker.Adapters.MenuAdapter;
 import com.example.android.teamtracker.Auth.LoginActivity;
 import com.example.android.teamtracker.Forms.FormFinalActivity;
 import com.example.android.teamtracker.Forms.FormInitialActivity;
+import com.example.android.teamtracker.ImageUpload.ImageUploadActivity;
 import com.example.android.teamtracker.LocationUtil.MyLocationUsingHelper;
 import com.example.android.teamtracker.Model.Initial;
 import com.example.android.teamtracker.Model.Item;
@@ -32,6 +33,7 @@ import com.example.android.teamtracker.Model.LoginHistory;
 import com.example.android.teamtracker.ReportLocation.ReportLocationActivity;
 import com.example.android.teamtracker.RequestParts.RequestActivity;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
+import com.google.android.gms.common.util.Strings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -63,22 +65,22 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
     private FirebaseAuth firebaseAuth;
 
 
-    static int[] imageResources = new int[]{
-            R.drawable.emotion,
-            R.drawable.music_player,
-            R.drawable.robot,
-            R.drawable.project,
-            R.drawable.clown,
-
-    };
-    static int[] Strings = new int[]{
-            R.string.voice,
-            R.string.news,
-            R.string.weather,
-            R.string.forum,
-            R.string.buy,
-
-    };
+//    static int[] imageResources = new int[]{
+//            R.drawable.emotion,
+//            R.drawable.music_player,
+//            R.drawable.robot,
+//            R.drawable.project,
+//            R.drawable.clown,
+//
+//    };
+//    static int[] Strings = new int[]{
+//            R.string.voice,
+//            R.string.news,
+//            R.string.weather,
+//            R.string.forum,
+//            R.string.buy,
+//
+//    };
 
     Toolbar toolbar;
     FrameLayout root;
@@ -112,7 +114,7 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 
             SharedPreferences sfEmail = getBaseContext().getSharedPreferences("email",Context.MODE_PRIVATE);
             String email = sfEmail.getString("email","Email Not found");
-            Toast.makeText(this, "SP check " + email, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "SP check " + email, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, currentDateTimeString, Toast.LENGTH_SHORT).show();
 
             uploadFile(email,currentDateTimeString);
@@ -127,6 +129,7 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
         arrayList.add(new Item(getString(R.string.posF), R.drawable.form_f, "#ffffff"));
         arrayList.add(new Item(getString(R.string.current), R.drawable.logo, "#ffffff"));
         arrayList.add(new Item(getString(R.string.input), R.drawable.form, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.upload),R.drawable.photo,"#ffffff"));
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
         recyclerView.setAdapter(menuAdapter);
@@ -172,10 +175,10 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
         if (ShakeDetector.create(this, this)) {
 //            final float sensibility = (float) (mSensibility.getProgress() + 10) / 10;
 //            ShakeDetector.updateConfiguration(sensibility, mShakeNumber.getProgress());
-            Toast.makeText(this, "Shake to call activated", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Shake to call activated", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
         }
 
 //        convertToHindi(SignupActivity.switchNumber);
@@ -212,13 +215,15 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
     }
 
     public static int getString() {
-        if (str >= Strings.length) str = 0;
-        return Strings[str++];
+//        if (str >= Strings.length) str = 0;
+//        return Strings[str++];
+        return 0;
     }
 
     public static int getImageResource() {
-        if (imageResourceIndex >= imageResources.length) imageResourceIndex = 0;
-        return imageResources[imageResourceIndex++];
+//        if (imageResourceIndex >= imageResources.length) imageResourceIndex = 0;
+//        return imageResources[imageResourceIndex++];
+        return 0;
     }
 
     public void start(int pos) {
@@ -265,9 +270,10 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
                 break;
             }
             case R.id.tvsignout: {
-//                FirebaseAuth.getInstance().signOut();
-//                login(null);
-//                break;
+//                mAuth.signOut();
+//                startActivity(new Intent(getBaseContext(),LoginActivity.class));
+                login(null);
+                break;
             }
        }
     }
@@ -283,20 +289,20 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
         if (shake) {
             shake = false;
 //            if (SignupActivity.switchNumber == 0)
-                Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
 //            else
 //                Toast.makeText(this, "अक्षम कॉल करने के लिए हिलाएँ", Toast.LENGTH_SHORT).show();
-            ShakeDetector.destroy();
-            v.setBackgroundColor(Color.rgb(255, 0, 0));
+//            ShakeDetector.destroy();
+//            v.setBackgroundColor(Color.rgb(255, 0, 0));
 
         } else {
             shake = true;
 //            if (SignupActivity.switchNumber == 0)
-                Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
 //            else
 //                Toast.makeText(this, "सक्षम कॉल करने के लिए हिला", Toast.LENGTH_SHORT).show();
-            ShakeDetector.create(this, this);
-            v.setBackgroundColor(Color.parseColor("#19783b"));
+//            ShakeDetector.create(this, this);
+//            v.setBackgroundColor(Color.parseColor("#19783b"));
 
         }
 
@@ -316,6 +322,8 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
             startActivity(new Intent(getBaseContext(), MyLocationUsingHelper.class));
         } else if (item.getText().equals("Fill Your Info")) {
             startActivity(new Intent(getBaseContext(), ReportLocationActivity.class));
+        }else if (item.getText().equals("Upload Image")) {
+            startActivity(new Intent(getBaseContext(), ImageUploadActivity.class));
         }
         else {
                Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();

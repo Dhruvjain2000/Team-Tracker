@@ -22,8 +22,11 @@ import android.widget.Toast;
 import com.example.android.teamtracker.Adapters.MenuAdapter;
 import com.example.android.teamtracker.Auth.LoginActivity;
 import com.example.android.teamtracker.Auth.SignupActivity;
+import com.example.android.teamtracker.ImageUpload.CheckImageActivity;
+import com.example.android.teamtracker.ImageUpload.ImageUploadActivity;
 import com.example.android.teamtracker.LocationUtil.CityByCoordinates;
 import com.example.android.teamtracker.Model.Item;
+import com.example.android.teamtracker.PushNotification.SendNotificationActivity;
 import com.example.android.teamtracker.R;
 import com.example.android.teamtracker.RequestParts.RequestActivity;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
@@ -88,6 +91,9 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         arrayList.add(new Item(getString(R.string.basic), R.drawable.complete, "#ffffff"));
         arrayList.add(new Item(getString(R.string.login), R.drawable.form, "#ffffff"));
         arrayList.add(new Item(getString(R.string.city), R.drawable.logo, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.notify), R.drawable.bell, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.uploaded),R.drawable.photo,"#ffffff"));
+
 
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
@@ -129,10 +135,10 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         if (ShakeDetector.create(this, this)) {
 //            final float sensibility = (float) (mSensibility.getProgress() + 10) / 10;
 //            ShakeDetector.updateConfiguration(sensibility, mShakeNumber.getProgress());
-            Toast.makeText(this, "Shake to call activated", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Shake to call activated", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -234,7 +240,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         if (shake) {
             shake = false;
 //            if (SignupActivity.switchNumber == 0)
-                Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
 //            else
 //                Toast.makeText(this, "अक्षम कॉल करने के लिए हिलाएँ", Toast.LENGTH_SHORT).show();
             ShakeDetector.destroy();
@@ -243,7 +249,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         } else {
             shake = true;
 //            if (SignupActivity.switchNumber == 0)
-                Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
 //            else
 //                Toast.makeText(this, "सक्षम कॉल करने के लिए हिला", Toast.LENGTH_SHORT).show();
             ShakeDetector.create(this, this);
@@ -255,7 +261,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 
     public void paytm(View v) {
 //        if (SignupActivity.switchNumber == 0)
-            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
 //        else
 //            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
 
@@ -269,7 +275,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
     @Override
     public void onItemClick(Item item) {
 //        if (SignupActivity.switchNumber == 0)
-            Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
 //        else
 //            Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
@@ -289,10 +295,10 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         } else if (item.getText().equals("Requested Parts")) {
             startActivity(new Intent(this, RequestedActivity.class));
             ;
-        } else if (item.getText().equals("Donate Your Info")) {
-//            startActivity(new Intent(getBaseContext(), QuestionnaireActivity.class));
-        }else if(item.getText().equals("Report your case")){
-//            startActivity(new Intent(this, ReportProblemActivity.class));
+        } else if (item.getText().equals("Send Notification")) {
+            startActivity(new Intent(getBaseContext(), SendNotificationActivity.class));
+        }else if(item.getText().equals("Uploaded Images")){
+            startActivity(new Intent(this, CheckImageActivity.class));
         }
         else {
 //            if (SignupActivity.switchNumber == 0)
@@ -300,6 +306,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
 //            else
 //                Toast.makeText(this, "त्रुटि! नुकसान की", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override
