@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:287586838056:android:434d884cef8c2190",
         "android_client_info": {
-          "package_name": "com.example.android.teamtracker"
+          "package_name": "app.tracker.android.teamtracker"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "287586838056-0m6bb2eitdh5amjdge7286sqdb3352ae.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.android.teamtracker",
+            "package_name": "app.tracker.android.teamtracker",
             "certificate_hash": "738ed68cb5dcd66d4c3e819c7688f1d9ef649a10"
           }
         },

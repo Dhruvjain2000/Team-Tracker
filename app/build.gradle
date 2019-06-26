@@ -23,7 +23,7 @@ android {
         manifestPlaceholders = [onesignal_app_id               : '84b06347-06f3-46f4-9734-ace01303e6e3',
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: 'REMOTE']
-        applicationId "com.example.android.teamtracker"
+        applicationId "app.tracker.android.teamtracker"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

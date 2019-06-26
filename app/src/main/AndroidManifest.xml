@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.teamtracker">
+    package="com.tracker.android.teamtracker">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".PushNotification.ExampleApplication"
+        android:name="com.team.tracker.android.teamtracker.PushNotification.ExampleApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -20,42 +20,42 @@
             android:name="com.onesignal.NotificationOpened.DEFAULT"
             android:value="DISABLE" />
 
-        <activity android:name=".BoardingActivity">
+        <activity android:name="com.team.tracker.android.teamtracker.BoardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LocationUtil.MyLocationUsingHelper" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".Auth.LoginActivity" />
-        <activity android:name=".MenuscreenActivity" />
-        <activity android:name=".MenuscreenActivity2" />
-        <activity android:name=".Auth.SignupActivity" />
-        <activity android:name=".Auth.PhoneAuthActivity" />
-        <activity android:name=".Auth.BaseActivity" />
-        <activity android:name=".ReportLocation.ReportLocationActivity" />
-        <activity android:name=".Auth.DifferentAuth" />
-        <activity android:name=".Auth.AnonymousActivity" />
-        <activity android:name=".Auth.PasswordlessActivity" />
-        <activity android:name=".Auth.GoogleSignInActivity" />
-        <activity android:name=".DummyActivity" />
-        <activity android:name=".LocationUtil.CityByCoordinates" />
-        <activity android:name=".RequestParts.RequestActivity" />
-        <activity android:name=".RequestedActivity" />
-        <activity android:name=".Forms.FormInitialActivity" />
-        <activity android:name=".Forms.FormFinalActivity" />
-        <activity android:name=".DepartureReportsActivity" />
-        <activity android:name=".ArrivalReportsActivity" />
-        <activity android:name=".CompleteInfoActivity" />
-        <activity android:name=".LoginInfoActivity" />
-        <activity android:name=".ImageUpload.ImageUploadActivity" />
-        <activity android:name=".ImageUpload.ImageActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.LocationUtil.MyLocationUsingHelper" />
+        <activity android:name="com.team.tracker.android.teamtracker.MainActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.SplashActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.LoginActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.MenuscreenActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.MenuscreenActivity2" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.SignupActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.PhoneAuthActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.BaseActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.ReportLocation.ReportLocationActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.DifferentAuth" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.AnonymousActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.PasswordlessActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Auth.GoogleSignInActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.DummyActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.LocationUtil.CityByCoordinates" />
+        <activity android:name="com.team.tracker.android.teamtracker.RequestParts.RequestActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.RequestedActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Forms.FormInitialActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.Forms.FormFinalActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.DepartureReportsActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.ArrivalReportsActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.CompleteInfoActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.LoginInfoActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.ImageUpload.ImageUploadActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.ImageUpload.ImageActivity" />
 
         <service
-            android:name=".ImageUpload.MyDownloadService"
+            android:name="com.team.tracker.android.teamtracker.ImageUpload.MyDownloadService"
             android:exported="false" />
 
         <!--
@@ -74,16 +74,16 @@
 
         <!-- <activity android:name=".MainActivity"></activity> -->
         <service
-            android:name=".ImageUpload.AddEvent"
+            android:name="com.team.tracker.android.teamtracker.ImageUpload.AddEvent"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".PushNotification.PushNotificationActivity" />
-        <activity android:name=".PushNotification.SecondActivity" />
-        <activity android:name=".PushNotification.GreenActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.PushNotification.PushNotificationActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.PushNotification.SecondActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.PushNotification.GreenActivity" />
 
         <service
-            android:name=".PushNotification.NotificationExtenderExample"
+            android:name="com.team.tracker.android.teamtracker.PushNotification.NotificationExtenderExample"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
@@ -91,8 +91,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".PushNotification.SendNotificationActivity" />
-        <activity android:name=".ImageUpload.CheckImageActivity"></activity>
+        <activity android:name="com.team.tracker.android.teamtracker.PushNotification.SendNotificationActivity" />
+        <activity android:name="com.team.tracker.android.teamtracker.ImageUpload.CheckImageActivity"></activity>
     </application>
 
 </manifest>

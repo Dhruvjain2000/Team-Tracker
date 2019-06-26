@@ -3,7 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.teamtracker.LocationUtil.MyLocationUsingHelper">
+    tools:context="com.tracker.android.teamtracker.app.tracker.android.teamtracker.LocationUtil.MyLocationUsingHelper">
 
     <LinearLayout
         android:id="@+id/header"
