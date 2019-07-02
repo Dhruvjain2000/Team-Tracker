@@ -73,5 +73,6 @@
     <string name="unsubscribed">Unsubscribed from news topic</string>
     <string name="notify">Send Notification</string>
     <string name="uploaded">Uploaded Images</string>
+    <string name="createaccount">Create Account</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package app.tracker.android.teamtracker.Auth;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
+
+import app.tracker.android.teamtracker.MenuscreenActivity;
 
 public class PhoneAuthActivity extends AppCompatActivity implements
         View.OnClickListener {
@@ -268,6 +271,7 @@ public class PhoneAuthActivity extends AppCompatActivity implements
                 break;
             case STATE_VERIFY_SUCCESS:
 
+                startActivity(new Intent(getBaseContext(), MenuscreenActivity.class));
                 disableViews(mStartButton, mVerifyButton, mResendButton, mPhoneNumberField,
                         mVerificationField);
                 mDetailText.setText(R.string.status_verification_succeeded);

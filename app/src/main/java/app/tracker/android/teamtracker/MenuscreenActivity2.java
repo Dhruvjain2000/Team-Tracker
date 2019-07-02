@@ -89,7 +89,7 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
         arrayList.add(new Item(getString(R.string.city), R.drawable.logo, "#ffffff"));
         arrayList.add(new Item(getString(R.string.notify), R.drawable.bell, "#ffffff"));
         arrayList.add(new Item(getString(R.string.uploaded),R.drawable.photo,"#ffffff"));
-
+        arrayList.add(new Item(getString(R.string.createaccount),R.drawable.newaccount,"#ffffff"));
 
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
@@ -287,7 +287,6 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
             startActivity(new Intent(getBaseContext(), LoginInfoActivity.class));
         } else if (item.getText().equals("City Identification")) {
             startActivity(new Intent(getBaseContext(),CityByCoordinates.class));
-//            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Requested Parts")) {
             startActivity(new Intent(this, RequestedActivity.class));
             ;
@@ -295,7 +294,10 @@ public class MenuscreenActivity2 extends AppCompatActivity implements View.OnCli
             startActivity(new Intent(getBaseContext(), SendNotificationActivity.class));
         }else if(item.getText().equals("Uploaded Images")){
             startActivity(new Intent(this, CheckImageActivity.class));
+        } else if(item.getText().equals("Create Account")){
+            startActivity(new Intent(this,NewAccountActivity.class));
         }
+
         else {
 //            if (SignupActivity.switchNumber == 0)
                 Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,8 @@
 package app.tracker.android.teamtracker.LocationUtil;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
@@ -131,6 +133,11 @@ public class MyLocationUsingHelper extends AppCompatActivity implements Connecti
 
                 if (!TextUtils.isEmpty(country))
                     currentLocation+="\n"+country;
+
+                SharedPreferences sharedPref = getBaseContext().getSharedPreferences("location", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("location", currentLocation);
+                editor.commit();
 
                 tvEmpty.setVisibility(View.GONE);
                 tvAddress.setText(currentLocation);

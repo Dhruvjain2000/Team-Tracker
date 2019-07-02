@@ -40,6 +40,7 @@ public class LoginInfoAdapter extends RecyclerView.Adapter<LoginInfoAdapter.Logi
         LoginHistory lh = contents.get(i);
         loginInfoAdapterHolder.tvDateAndTime.setText(lh.getDateAndtime());
         loginInfoAdapterHolder.tvEmail.setText(lh.getEmail());
+        loginInfoAdapterHolder.tvLocation.setText(lh.getLocation());
     }
 
     @Override
@@ -48,12 +49,13 @@ public class LoginInfoAdapter extends RecyclerView.Adapter<LoginInfoAdapter.Logi
     }
 
     public class LoginInfoAdapterHolder extends RecyclerView.ViewHolder {
-        TextView tvEmail, tvDateAndTime;
+        TextView tvEmail, tvDateAndTime,tvLocation;
 
         public LoginInfoAdapterHolder(@NonNull View itemView) {
             super(itemView);
             tvEmail = itemView.findViewById(R.id.tvEmail);
             tvDateAndTime = itemView.findViewById(R.id.tvDateAndTime);
+            tvLocation = itemView.findViewById(R.id.tvLocation);
         }
     }
 }

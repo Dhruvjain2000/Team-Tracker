@@ -113,10 +113,13 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 
             SharedPreferences sfEmail = getBaseContext().getSharedPreferences("email",Context.MODE_PRIVATE);
             String email = sfEmail.getString("email","Email Not found");
-//            Toast.makeText(this, "SP check " + email, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, currentDateTimeString, Toast.LENGTH_SHORT).show();
 
-            uploadFile(email,currentDateTimeString);
+            SharedPreferences sflocation = getBaseContext().getSharedPreferences("location",Context.MODE_PRIVATE);
+            String location = sflocation.getString("location","DLF Cyber Greens, DLF Cyber City, DLF Phase 2, Sector 24, Gurugram, Haryana 122002");
+//            Toast.makeText(this, "SP check " + email, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, currentDateTimeString, Toast.LENGTH_SHORT).show();
+
+            uploadFile(email,currentDateTimeString,location);
         }
 
             mAuth = FirebaseAuth.getInstance();
@@ -199,8 +202,8 @@ public class MenuscreenActivity extends AppCompatActivity implements View.OnClic
 //        signOut.setText(getString(R.string.sign_out_h));
 //    }
 
-    private void uploadFile(String email, String dateAndTime) {
-        LoginHistory upload = new LoginHistory(email,dateAndTime);
+    private void uploadFile(String email, String dateAndTime,String location) {
+        LoginHistory upload = new LoginHistory(email,dateAndTime,location);
         String uploadId = mDatabaseRef.push().getKey();
         mDatabaseRef.child(uploadId).setValue(upload);
     }
